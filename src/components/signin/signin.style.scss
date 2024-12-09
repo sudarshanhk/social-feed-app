@@ -1,0 +1,58 @@
+.sign-in-container {
+    height: 100vh;
+    position: relative;
+    background-color: #c6c6c6;
+    background-image: url(../../assests/login-bg.png);
+    background-size: 100% 80%;
+    background-position-y: top;
+    background-repeat: no-repeat;
+
+    .login-option-box {
+    position: absolute;
+        bottom: 0;
+        transform: translate(50%);
+        right: 50%;
+        max-width: 480px;
+        text-align: center;
+        padding: 3rem 0 6rem;
+        width: 100%;
+        background: #fff;
+        border-radius: 3.5rem 3.5rem 0rem 0rem;
+       
+    }
+    .app-name-box{
+        display: flex;
+            justify-content: center;
+            align-items: start;
+        }
+    .app-logo img{
+        max-width: 50px;
+    }
+
+    .button-container{
+        display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            border-radius: 20rem;
+            /* max-width: 200px; */
+            color: #fff;
+            text-transform: capitalize;
+            /* padding: 0 36px; */
+            margin: 0 auto;
+            padding: .50rem .5rem;
+            cursor: pointer;
+            max-width: 260px;
+    }
+    .button-container img{
+        max-width: 50px;
+    }
+    .app-name-box h2{
+        margin: 0px;
+    }
+    .login-description{
+        margin-bottom: 2rem;
+        font-size: 22px;
+        padding-top: .5rem;
+    }
+}
