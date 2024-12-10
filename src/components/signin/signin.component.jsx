@@ -1,7 +1,8 @@
 import "./signin.style.scss";
 
 import { signInWithGooglePopup } from "../../utils/firebase/firebase.utilities";
-import { CreateUserDocumentAuth } from "../../utils/firebase/firebase.utilities";
+
+import Buttons from "../buttons/buttons.component";
 import BrandLogo from "../../assets/bran-logo.png"
 import GoogleLogo from "../../assets/google-logo.png"
 
@@ -20,10 +21,9 @@ const SignIn = () => {
                         <h2>Vibesnap</h2>
                     </div>
                     <div className="login-description">Moment That matter , shared Forever</div>
-                    <div className="button-container" onClick={signInWithGoogleHandler}>
-                        <span><img src={GoogleLogo} alt="" /></span>  <span type="button"> continue with google </span>
-                    </div>
 
+                    <Buttons onClick={signInWithGoogleHandler} buttonType={'primaryButton'} brandLogo={GoogleLogo} buttonName={'Continue With Google'}  />
+                   
                 </div>
             </div>
         </div>

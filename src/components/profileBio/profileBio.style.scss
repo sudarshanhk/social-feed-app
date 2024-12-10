@@ -1,0 +1,55 @@
+.profile-bio-container {
+    position: relative;
+    // .profile-bio-bgImage-container {
+    //     position: relative;
+    // }
+
+    .profile-bg-image img {
+        width: 100%;
+        max-height: 210px;
+        object-fit: fill;
+    }
+
+    .profile-image img {
+        max-width: 100px;
+        max-width: 100px;
+        border-radius: 50%;
+        width: 100%;
+    }
+
+    .profile-icon-section {
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        position: absolute;
+        top: 165px;
+        width: 95%;
+        transform: translate(50%);
+        right: 50%;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    .user-display-box {
+        margin-top: 2.5rem;
+        padding: 0 1rem
+    }
+
+    .user-bio-name-text {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .edit-bio-section {
+        padding: 0 1rem;
+    }
+
+    .user-bio-text {
+        color: #ABABAB;
+        font-weight: 500;
+        font-size: 14px;
+        margin-top: .5rem;
+    }
+}

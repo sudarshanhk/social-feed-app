@@ -1,0 +1,26 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20rem;
+    max-width: 280px;
+    text-transform: capitalize;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    // min-width: 260px;
+    font-weight: bold;
+    background: #fff;
+    color: #000;
+
+    &.primaryButton {
+        background: #000 !important;
+        color: #fff !important;
+    }
+
+    &.secondaryButton {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000
+    }
+}
