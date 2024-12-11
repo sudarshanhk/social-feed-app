@@ -1,0 +1,131 @@
+.feed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.feed-card {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+}
+
+.feed-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.carousel-count {
+    font-size: 14px;
+    color: #555;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-content {
+    display: flex;
+}
+
+.carousel-item {
+    min-width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.feed-image,
+.feed-media {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.prev-btn,
+.next-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.feed-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.feed-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.feed-actions {
+    margin-top: 10px;
+}
+
+.like-btn,
+.share-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #efefef;
+    border-radius: 5px;
+}
+
+.loading-spinner {
+    margin: 20px;
+    font-size: 16px;
+    color: #888;
+}
+
+.load-more-trigger {
+    height: 1px;
+}
