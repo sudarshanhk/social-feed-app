@@ -6,8 +6,10 @@
 
     .profile-bg-image img {
         width: 100%;
-        max-height: 210px;
+        max-height: 180px;
         object-fit: fill;
+            border-bottom-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
     }
 
     .profile-image img {
@@ -15,15 +17,23 @@
         max-width: 100px;
         border-radius: 50%;
         width: 100%;
+           
     }
 
-    .profile-icon-section {
-        display: flex;
+    .profile-icon-section {display: flex;
         justify-content: start;
         align-items: end;
         position: absolute;
         top: 165px;
         width: 95%;
+        transform: translate(50%);
+        right: 50%;
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        position: absolute;
+        top: 125px;
+        width: 92%;
         transform: translate(50%);
         right: 50%;
     }
@@ -33,7 +43,7 @@
     }
 
     .user-display-box {
-        margin-top: 2.5rem;
+        margin-top: 4rem;
         padding: 0 1rem
     }
 

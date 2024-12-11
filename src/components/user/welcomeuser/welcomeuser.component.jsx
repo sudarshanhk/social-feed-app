@@ -6,15 +6,15 @@ import './welcomeuser.style.scss';
 
 const WelcomeUser = () => {
     const navigate = useNavigate();
-    const { currentUser } = useContext(UserContext);
+    const { currentUser  , userDetails} = useContext(UserContext);
     if (!currentUser) {
-        navigate("/login");
+        navigate("/");
         return null; 
     }
     const profilePageNavigation = () => {
         navigate("/profile")
     }
-    const {  displayName, photoURL } = currentUser
+    const { displayName, photoURL } = userDetails
     return (
         <div className="user-details-container" onClick={profilePageNavigation}>
             <div className="user-box">

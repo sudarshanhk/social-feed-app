@@ -1,0 +1,153 @@
+.profile-bio-container {
+    position: relative;
+    // .profile-bio-bgImage-container {
+    //     position: relative;
+    // }
+
+    .profile-bg-image img {
+        width: 100%;
+        max-height: 180px;
+        object-fit: fill;
+        border-bottom-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+    }
+
+    .profile-image img {
+        max-width: 100px;
+        max-width: 100px;
+        border-radius: 50%;
+        width: 100%;
+    }
+
+    .profile-icon-section {
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        position: absolute;
+        top: 165px;
+        width: 95%;
+        transform: translate(50%);
+        right: 50%;
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        position: absolute;
+        top: 125px;
+        width: 92%;
+        transform: translate(50%);
+        right: 50%;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    .user-display-box {
+        margin-top: 2.5rem;
+        padding: 0 1rem
+    }
+
+    .user-bio-name-text {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .edit-bio-section {
+        padding: 0 1rem;
+    }
+
+    .user-bio-text {
+        color: #ABABAB;
+        font-weight: 500;
+        font-size: 14px;
+        margin-top: .5rem;
+    }
+    .profile-image{
+        position: relative;
+    }
+    .profile-edit-icon{
+            position: absolute;
+                max-width: 50px;
+                right: -19px;
+                right: -20px;
+                bottom: 4%;
+    }
+
+    .back-arrow{
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        margin-left: 1rem;
+        position: absolute;
+        color: #fff;
+        top: 1rem;
+        font-size: 20px;
+        column-gap: 1rem;
+        font-weight: bold;
+    }
+    .back-arrow img{
+        max-width: 40px;
+        max-height: 28px;
+    }
+        .profile-bg-edit-icon{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        .profile-bg-edit-icon img {
+            max-width: 50px;
+            cursor: pointer;
+        }
+
+        .user-bio-box{
+            margin-top: 5rem;
+        }
+        .bio-info{
+            position: relative;
+        };
+        .user-bio-box{
+            padding: 0 1.5rem;
+        }
+                .form-group {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 16px;
+                }
+        
+                .form-group label {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #333;
+                    margin-bottom: 8px;
+                }
+        
+                .form-group .form-input {
+                    // padding: 10px;
+                    font-size: 16px;
+                    border: 0;
+                    border-bottom: 1px solid #ccc;
+                    border-radius: 0;
+                    outline: none;
+                    transition: border-color 0.3s ease-in-out;
+                }
+        
+                .form-group .form-input:focus {
+                    border-color: #007bff;
+                    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+                }
+        
+                .form-group .form-input::placeholder {
+                    color: #888;
+                    font-style: italic;
+                }
+
+                .primaryButton{
+                    margin-top: 5rem;
+                }
+                .user-bio-box form{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 54vh;
+                }
+}
