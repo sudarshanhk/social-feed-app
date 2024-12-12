@@ -84,11 +84,13 @@
         font-size: 20px;
         column-gap: 1rem;
         font-weight: bold;
+        cursor: pointer;
+        img {
+                max-width: 40px;
+                max-height: 28px;
+            }
     }
-    .back-arrow img{
-        max-width: 40px;
-        max-height: 28px;
-    }
+   
         .profile-bg-edit-icon{
             position: absolute;
             right: 10px;

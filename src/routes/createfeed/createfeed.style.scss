@@ -20,6 +20,9 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        img{
+            max-width: 100px;
+        }
     }
          .create-post-navigation-header {
              display: flex;
@@ -40,6 +43,7 @@
                  justify-content: center;
                  align-items: center;
                  margin-bottom: 20px;
+                 min-height: 200px;
     
                 
     
@@ -61,15 +65,16 @@
                  display: flex;
                  flex-direction: column;
                  align-items: center;
-                 margin-top: 20px;
-    
+                //  margin-top: 20px;
+                position: relative;
                  .file-preview-card {
                      width: 100%;
-                     max-width: 500px;
-                     height: 400px;
+                     max-width: 400px;
+                     height: 300px;
                      overflow: hidden;
                      margin-bottom: 20px;
                      position: relative;
+                     border-radius: 25px;
     
                      .preview-image {
                          width: 100%;
@@ -105,9 +110,14 @@
                  }
     
                  .carousel-info {
-                     font-size: 14px;
-                     text-align: center;
-                     color: #555;
+                    font-size: 14px;
+                        text-align: center;
+                        color: #555;
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        font-weight: 500;
+                        color: #fff;
                  }
              }
     
@@ -118,6 +128,13 @@
              }
          }
 .primaryButton{
-    margin-top: 3rem;
+    margin-top: 6.5rem;
+}
+.create-post-navigation-header{
+    font-weight: 500;
+}
+.form-input:focus {
+    outline: none;
+    border-bottom: 2px solid #000  !important;
 }
 }

@@ -1,10 +1,11 @@
 import "./createfeed.style.scss";
 import Buttons from "../../components/buttons/buttons.component";
 import Upload_png from "../../assets/upload-image.png";
-import { useRef, useState  , useContext} from "react";
+import { useRef, useState  , useContext ,} from "react";
 import { db, auth } from "../../utils/firebase/firebase.utilities"; // Firebase Firestore and Auth imports
 import { collection, addDoc, Timestamp } from "firebase/firestore"; // Firestore methods for adding data
 import { UserContext } from "../../context/user.context";
+import { useNavigate } from "react-router-dom";
 
 
 const CreateFeed = () => {
@@ -14,7 +15,7 @@ const CreateFeed = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showUpload, setShowUpload] = useState(true);
     const [isUploading, setIsUploading] = useState(false);
-
+    const navigate = useNavigate();
     const uploadFeedHandler = () => {
         fileInputRef.current.click();
     };
@@ -90,7 +91,11 @@ const CreateFeed = () => {
         }
 
         // const { uid, displayName, email } = user;
-
+        if (!title) {
+            console.log("no title found");
+            setIsUploading(false)
+            return
+}
         // Create a new feed object with user details
         const feedData = {
             title: title,
@@ -107,13 +112,13 @@ const CreateFeed = () => {
             // Add the new feed data to Firestore and get the unique document ID
             const feedRef = await addDoc(collection(db, "feeds"), feedData);
             console.log("Feed successfully uploaded:", feedRef.id);
+            
 
-            // After uploading the feed, you can now use the unique feed ID (feedRef.id)
-            // For example, you can store this ID in the user's document if needed for later references
 
             setTitle(""); // Clear the title input after saving
             setFilePreviews([]); // Clear the file previews
             setShowUpload(true); // Show the upload section again
+            navigate("/feed");
         } catch (error) {
             console.error("Error saving feed to Firestore:", error);
         } finally {
@@ -124,8 +129,8 @@ const CreateFeed = () => {
     return (
         <div className="create-feed-container">
             <div className="create-post-navigation-header">
-                <span className="left-arrow"></span>
-                <div>New Post</div>
+               
+                  Create New Post
             </div>
 
             <div className="create-feed-box">

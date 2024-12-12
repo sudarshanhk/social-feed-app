@@ -1,0 +1,22 @@
+.profile-container{
+    position: relative;
+.back-arrow {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        margin-left: 1rem;
+        position: absolute;
+        color: #fff;
+        top: 1rem;
+        font-size: 20px;
+        column-gap: 1rem;
+        font-weight: bold;
+        z-index: 1;
+        cursor: pointer;
+        img {
+                max-width: 40px;
+                max-height: 28px;
+            }
+    }
+}
+

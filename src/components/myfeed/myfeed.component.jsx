@@ -58,7 +58,7 @@ const MyFeeds = () => {
     return (
         <div className="my-feeds-container">
             <div className="my-feeds-header">
-                <h2>Your Feeds</h2>
+              Your Feeds
             </div>
 
             {loading ? (
@@ -71,7 +71,7 @@ const MyFeeds = () => {
                         myFeeds.map((feed) => (
                             <div key={feed.id} className="feed-card">
                                 <div className="feed-title">
-                                    <h3>{feed.title}</h3>
+                                  {feed.title}
                                 </div>
 
                                 {/* Carousel for each feed's media */}

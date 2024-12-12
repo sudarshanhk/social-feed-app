@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect  , useRef} from "react";
 import "./usersfeeds.style.scss";
 import { toast } from 'react-toastify'; // To show success/failure messages
 import { db } from "../../utils/firebase/firebase.utilities"; // Firestore import
@@ -14,6 +14,26 @@ const UserFeeds = ({ userFeeds }) => {
     const [showSharePopup, setShowSharePopup] = useState(false); // To show share popup
     const [copySuccess, setCopySuccess] = useState(false); // To track if copy was successful
 
+    const targetRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const targetElement = targetRef.current;
+            if (targetElement) {
+                const rect = targetElement.getBoundingClientRect();
+                if (rect.bottom <= window.innerHeight) {
+                    console.log('Page scroll ended');
+                    // Add your desired actions here, e.g., fetching more data, triggering animations, etc.
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [targetRef]);
     // Function to handle dot click
     const handleDotClick = (index) => {
         setCurrentIndex(index);
@@ -101,7 +121,7 @@ const UserFeeds = ({ userFeeds }) => {
     }, [showSharePopup]);
 
     return (
-        <div className="feed-card">
+        <div className="feed-card" ref={targetRef}>
             <div className="feed-content">
                 {/* Carousel Container */}
                 {userFeeds.fileUrls && userFeeds.fileUrls.length > 0 && (
