@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/social-feed-app/static/css/main.b1b4a986.css",
+    "main.js": "/social-feed-app/static/js/main.bb96abee.js",
+    "static/js/488.48fa673b.chunk.js": "/social-feed-app/static/js/488.48fa673b.chunk.js",
+    "static/media/login-bg.png": "/social-feed-app/static/media/login-bg.8a11ec7eb5759268ab2a.png",
+    "static/media/default-bg.png": "/social-feed-app/static/media/default-bg.bffea8388dd296474233.png",
+    "static/media/snapchat.png": "/social-feed-app/static/media/snapchat.8b4bedd900a1f69872bc.png",
+    "static/media/bran-logo.png": "/social-feed-app/static/media/bran-logo.913c66ffab67e06f64e4.png",
+    "static/media/profileDefaule.png": "/social-feed-app/static/media/profileDefaule.a17edee1f3708fb7e121.png",
+    "static/media/facebook.png": "/social-feed-app/static/media/facebook.4c8101d54182add0c2da.png",
+    "static/media/instagram.png": "/social-feed-app/static/media/instagram.c0c9e12f9b26bb249582.png",
+    "static/media/whatsapp.png": "/social-feed-app/static/media/whatsapp.3606cd4e84acd479f745.png",
+    "index.html": "/social-feed-app/index.html",
+    "main.b1b4a986.css.map": "/social-feed-app/static/css/main.b1b4a986.css.map",
+    "main.bb96abee.js.map": "/social-feed-app/static/js/main.bb96abee.js.map",
+    "488.48fa673b.chunk.js.map": "/social-feed-app/static/js/488.48fa673b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1b4a986.css",
+    "static/js/main.bb96abee.js"
+  ]
+}
