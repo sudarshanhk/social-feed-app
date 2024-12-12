@@ -1,0 +1,161 @@
+// Variables
+$primary-color: #0073e6;
+$secondary-color: #28a745;
+$dot-color: rgba(255, 255, 255, 0.7);
+$dot-active-color: white;
+$liked-color: red;
+$bg-color: #fff;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$carousel-height: 408px;
+$carousel-dot-size: 10px;
+
+// Feed Card Styles
+.feed-card {
+   
+
+    .feed-content {
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: $carousel-height;
+            overflow: hidden;
+
+            .carousel-content {
+                display: flex;
+                transition: transform 0.3s ease-in-out;
+                width: 100%;
+            }
+
+            .carousel-item {
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+
+                &.active {
+                    display: block;
+                }
+            }
+
+            .carousel-dots {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 5px;
+
+                .dot {
+                    width: $carousel-dot-size;
+                    height: $carousel-dot-size;
+                    border-radius: 50%;
+                    background-color: $dot-color;
+                    cursor: pointer;
+
+                    &.active {
+                        background-color: $dot-active-color;
+                    }
+                }
+            }
+        }
+
+        .feed-info {
+            margin-top: 15px;
+            text-align: center;
+
+            .like-btn,
+            .share-btn {
+                cursor: pointer;
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .like-btn {
+                &.liked {
+                    color: $liked-color;
+                }
+            }
+        }
+    }
+}
+
+// Share Popup Styles
+.share-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .popup-content {
+        background: $bg-color;
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+        width: 80%;
+        max-width: 400px;
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .share-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .share-btn {
+                padding: 10px;
+                background-color: $primary-color;
+                color: $bg-color;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+            }
+        }
+
+        .copy-link {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+
+            .copy-link-btn {
+                padding: 10px;
+                background-color: $secondary-color;
+                color: $bg-color;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .copy-message {
+                color: green;
+                font-size: 14px;
+                align-self: center;
+            }
+        }
+    }
+}
+
+// Carousel Button Styles (Next and Prev)
+.next-btn,
+.prev-btn {
+    display: none;
+}
+.post-title{
+    font-size: 16px;
+    text-align: left;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+.carousel-header{
+    margin-bottom: 0px;
+}

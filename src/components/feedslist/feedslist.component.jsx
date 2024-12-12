@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { db } from "../../utils/firebase/firebase.utilities"; // Firestore utils
 import { collection, getDocs, query, orderBy, limit, startAfter } from "firebase/firestore";
 import "./feedslist.style.scss"; // Add your styles
+import UserFeeds from "../userfeeds/usersfeeds.components";
 
 const FeedList = () => {
     const [feeds, setFeeds] = useState([]);
@@ -28,7 +29,12 @@ const FeedList = () => {
 
             console.log(newFeeds);
 
-            setFeeds(prev => [...prev, ...newFeeds]); 
+            setFeeds((prevFeeds) => {
+                const feedIds = newFeeds.map(feed => feed.id);
+                const uniqueFeeds = prevFeeds.filter(feed => !feedIds.includes(feed.id));
+                return [...uniqueFeeds, ...newFeeds]; // Append only non-duplicate feeds
+            });
+
            
         } catch (error) {
             console.error("Error fetching feeds:", error);
@@ -43,34 +49,13 @@ const FeedList = () => {
         fetchFeeds(); // Fetch initial feeds when the component mounts
     }, []);
 
-    // Carousel slide functions
-    const handleNext = (index, length) => {
-        if (index < length - 1) {
-            setCurrentIndex(index + 1);
-        }
-    };
-
-    const handlePrev = (index) => {
-        if (index > 0) {
-            setCurrentIndex(index - 1);
-        }
-    };
+    
     // fetchFeeds();
     return (
         <div className="feed-container">
-          
-            {
-                feeds.map(totalFeeds => {
-                   
-                    return totalFeeds.fileUrls.map(fileUrls => {
-                       
-                        console.log(fileUrls); // Replace 123 with your 
-                        return 123;  
-                    });
-                })
-            }
-            
-          
+            {feeds.map(totalFeeds => (
+                <UserFeeds key={totalFeeds.id} userFeeds={totalFeeds} />
+            ))}
         </div>
     );
 };

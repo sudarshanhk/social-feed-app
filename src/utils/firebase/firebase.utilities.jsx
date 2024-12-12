@@ -25,7 +25,7 @@ googleProvider.setCustomParameters({
 });
 
 // Initialize Firebase Auth
-const auth = getAuth();
+ export const  auth = getAuth();
 
 // Function to handle Google Sign-In popup
 export const signInWithGooglePopup = () => {

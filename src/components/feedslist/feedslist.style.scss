@@ -1,34 +1,53 @@
+// Variables (for easy customization)
+$primary-bg-color: #F7EBFF;
+$secondary-bg-color: #efefef;
+$text-color-light: #555;
+$text-color-dark: #888;
+$highlight-color: rgba(0, 0, 0, 0.5);
+$hover-highlight-color: rgba(0, 0, 0, 0.8);
+$border-radius: 10px;
+
+// Feed Container
 .feed-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    row-gap: 1rem;
+    max-height: 80vh;
+    overflow: auto;
+    padding-bottom: 4rem;
+    &::-webkit-scrollbar {
+            width: 0px;
+            /* You can reduce this value to make the scrollbar thinner */
+        }
 }
 
+// Feed Card Styling
 .feed-card {
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    background: $primary-bg-color;
+    border-radius: 20px;
     width: 100%;
-    max-width: 600px;
-    background-color: #fff;
+    padding-bottom: 10px;
 }
 
+// Feed Content Styling
 .feed-content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+// Carousel Container
 .carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden;
 }
 
+// Carousel Header
 .carousel-header {
     text-align: center;
     font-weight: bold;
@@ -37,9 +56,10 @@
 
 .carousel-count {
     font-size: 14px;
-    color: #555;
+    color: $text-color-light;
 }
 
+// Carousel
 .carousel {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -50,6 +70,7 @@
     display: flex;
 }
 
+// Carousel Item Styling
 .carousel-item {
     min-width: 100%;
     max-width: 100%;
@@ -57,14 +78,17 @@
     text-align: center;
 }
 
+// Feed Image and Media
 .feed-image,
 .feed-media {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+  height: 250px;
+    border-radius: 0px;
     object-fit: cover;
+
 }
 
+// Carousel Controls (Next and Previous Buttons)
 .carousel-controls {
     position: absolute;
     top: 50%;
@@ -76,7 +100,7 @@
 
 .prev-btn,
 .next-btn {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: $highlight-color;
     color: white;
     padding: 10px;
     font-size: 18px;
@@ -84,22 +108,21 @@
     cursor: pointer;
     border-radius: 50%;
     transition: background-color 0.3s ease;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &:hover {
+        background-color: $hover-highlight-color;
+    }
 }
 
-.prev-btn:disabled,
-.next-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.prev-btn:hover,
-.next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
+// Feed Info and Actions
 .feed-info {
-    margin-top: 10px;
-    text-align: center;
+  width: 100%;
+  display: flex;
 }
 
 .feed-title {
@@ -108,24 +131,42 @@
 }
 
 .feed-actions {
-    margin-top: 10px;
+    // margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
+// Like and Share Button Styling
 .like-btn,
 .share-btn {
     cursor: pointer;
     padding: 5px 10px;
     margin: 5px;
-    background-color: #efefef;
+   
     border-radius: 5px;
 }
 
+// Loading Spinner Styling
 .loading-spinner {
     margin: 20px;
     font-size: 16px;
-    color: #888;
+    color: $text-color-dark;
 }
 
+// Load More Trigger
 .load-more-trigger {
     height: 1px;
+}
+
+// Feed Header Text Styling
+.feed-header-text {
+    font-weight: 500;
+    font-size: 25px;
+    padding: 0 1rem;
+}
+
+// Other User Box Styling (Left Text Align)
+.other-user-box {
+    text-align: left;
 }

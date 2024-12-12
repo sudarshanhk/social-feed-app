@@ -1,9 +1,11 @@
 import "./createfeed.style.scss";
 import Buttons from "../../components/buttons/buttons.component";
 import Upload_png from "../../assets/upload-image.png";
-import { useRef, useState } from "react";
-import { db } from "../../utils/firebase/firebase.utilities"; // Firebase Firestore import
+import { useRef, useState  , useContext} from "react";
+import { db, auth } from "../../utils/firebase/firebase.utilities"; // Firebase Firestore and Auth imports
 import { collection, addDoc, Timestamp } from "firebase/firestore"; // Firestore methods for adding data
+import { UserContext } from "../../context/user.context";
+
 
 const CreateFeed = () => {
     const fileInputRef = useRef(null);
@@ -29,7 +31,7 @@ const CreateFeed = () => {
         }
 
         setFilePreviews(previews);
-        setCurrentIndex(0); 
+        setCurrentIndex(0); // Set the currentIndex to 0 so the first image/video is shown
     };
 
     const handleDotClick = (index) => {
@@ -47,36 +49,68 @@ const CreateFeed = () => {
             if (file) {
                 const formData = new FormData();
                 formData.append("file", file);
-                formData.append("upload_preset", "sudarshan_preset_upload"); 
+                formData.append("upload_preset", "sudarshan_preset_upload");
 
-                const response = await fetch("https://api.cloudinary.com/v1_1/dlgulcrz2/image/upload", {
-                    method: "POST",
-                    body: formData,
-                });
-                const data = await response.json();
-                fileUrls.push(data.secure_url); 
+                // If the file is a video, set the resource_type to 'video'
+                const resourceType = file.type.startsWith("video/") ? "video" : "image";
+                formData.append("resource_type", resourceType);
+
+                try {
+                    const response = await fetch("https://api.cloudinary.com/v1_1/dlgulcrz2/upload", {
+                        method: "POST",
+                        body: formData,
+                    });
+                    const data = await response.json();
+
+                    // Push the URL of the uploaded file (image or video) to the fileUrls array
+                    if (data.secure_url) {
+                        fileUrls.push(data.secure_url);
+                    } else {
+                        console.error("Error uploading file: ", data);
+                    }
+                } catch (error) {
+                    console.error("Upload failed:", error);
+                }
             }
         }
 
         return fileUrls;
     };
 
-    // Function to save feed to Firestore
+    const { currentUser, userDetails } = useContext(UserContext);
+    console.log(currentUser)
+    const { photoURL, displayName, email, bg, bio, uid } = userDetails;
+    // Function to save feed to Firestore with user details
     const saveFeedToFirestore = async () => {
         const fileUrls = await uploadFilesToCloudinary();
+       
+        if (!currentUser) {
+            console.error("User is not logged in.");
+            return;
+        }
 
-        // Create a new feed object
+        // const { uid, displayName, email } = user;
+
+        // Create a new feed object with user details
         const feedData = {
             title: title,
             fileUrls: fileUrls,
             likes: 0,
             timestamp: Timestamp.fromDate(new Date()), // Store timestamp
+            createdBy: currentUser.uid, // Store the user ID who created the feed
+            displayName: displayName, // Store user's display name
+            email: email, // Store user's email
+            photoURL : photoURL, // Store user's photo URL
         };
 
         try {
-            // Add the new feed data to Firestore
+            // Add the new feed data to Firestore and get the unique document ID
             const feedRef = await addDoc(collection(db, "feeds"), feedData);
             console.log("Feed successfully uploaded:", feedRef.id);
+
+            // After uploading the feed, you can now use the unique feed ID (feedRef.id)
+            // For example, you can store this ID in the user's document if needed for later references
+
             setTitle(""); // Clear the title input after saving
             setFilePreviews([]); // Clear the file previews
             setShowUpload(true); // Show the upload section again
@@ -95,7 +129,7 @@ const CreateFeed = () => {
             </div>
 
             <div className="create-feed-box">
-             
+                {/* Upload Section */}
                 <div className="upload-section" style={{ display: showUpload ? "flex" : "none" }}>
                     <div className="upload-selection-box" onClick={uploadFeedHandler}>
                         <img src={Upload_png} alt="Upload" />
@@ -110,7 +144,7 @@ const CreateFeed = () => {
                     />
                 </div>
 
-              
+                {/* File Previews (Carousel) */}
                 {filePreviews.length > 0 && (
                     <div className="file-carousel-container">
                         <div className="file-preview-card">
@@ -125,7 +159,7 @@ const CreateFeed = () => {
                             )}
                         </div>
 
-                      
+                        {/* Carousel Dots */}
                         <div className="carousel-dots">
                             {filePreviews.map((_, index) => (
                                 <span
@@ -136,21 +170,22 @@ const CreateFeed = () => {
                             ))}
                         </div>
 
+                        {/* Carousel Info */}
                         <div className="carousel-info">
                             <span>{`${currentIndex + 1} / ${filePreviews.length}`}</span>
                         </div>
                     </div>
                 )}
 
-             
+                {/* Title Input */}
                 <div className="title-input">
-                    
                     <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Add Caption"
-                        className="form-input" required
+                        className="form-input"
+                        required
                     />
                 </div>
 

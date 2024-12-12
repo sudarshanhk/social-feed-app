@@ -1,8 +1,12 @@
 .user-feed-container {
-    .feed-create-button img {
-        position: fixed;
-        bottom: 145px;
-        right: 52px;
+    .feed-create-button{
+        position: relative;
+        div {
+                position: absolute;
+                bottom: 110px;
+                right: 37px;
+            }
     }
+   
 }
 

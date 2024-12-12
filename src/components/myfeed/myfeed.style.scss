@@ -1,0 +1,93 @@
+.my-feeds-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.my-feeds-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.feeds-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+// .feed-card {
+//     border: 1px solid #ccc;
+//     border-radius: 10px;
+//     overflow: hidden;
+//     background-color: #fff;
+//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+// }
+
+.feed-title {
+    padding: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.feed-title h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.feed-carousel-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.file-preview-card {
+    width: 100%;
+    height: 100%;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-video {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+.carousel-info {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+}

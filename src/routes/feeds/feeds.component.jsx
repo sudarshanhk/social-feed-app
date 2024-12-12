@@ -11,8 +11,11 @@ const Feeds = () => {
     }
     return (
         <div className="user-feed-container">
-            {<WelcomeUser />}
-            <h2>Feeds</h2>
+            {<WelcomeUser text={"Welcome Back"} />}
+            
+            <div className="feed-header-text">
+Feeds
+            </div>
             <FeedList />
             <div className="feed-create-button" onClick={createPostHandler}>
                 <CreateFeedButton  />
