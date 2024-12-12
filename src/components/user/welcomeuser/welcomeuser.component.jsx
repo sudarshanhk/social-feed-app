@@ -2,7 +2,7 @@ import { UserContext } from "../../../context/user.context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import './welcomeuser.style.scss';
-
+// import DefaultImg from '../../assets/profileDefaule.png';
 const WelcomeUser = ( { text}) => {
     const navigate = useNavigate();
     const { currentUser, userDetails } = useContext(UserContext);
@@ -17,7 +17,7 @@ const WelcomeUser = ( { text}) => {
     }
 
     const { displayName, photoURL } = userDetails;
-    const profilePicUrl = photoURL || currentUser.photoURL || 'default-image-url'; // Fallback to a default image if necessary
+    const profilePicUrl = photoURL || currentUser.photoURL || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s' // Fallback to a default image if necessary
 
     console.log(userDetails);
 
@@ -27,14 +27,14 @@ const WelcomeUser = ( { text}) => {
                 <div className="user-box">
                     <span className="user-image">
                         <img
-                            src={profilePicUrl}
-                            alt={`${displayName}`}
-                            onError={(e) => e.target.src = 'default-image-url'} // Fallback if image fails to load
+                            src={profilePicUrl ? profilePicUrl : currentUser.photoURL}
+                           
+                            onError={(e) => e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s'} // Fallback if image fails to load
                         />
                     </span>
                     <div>
                         <span className="welcome-text">{text}</span>
-                        <div className="userName">{displayName}</div>
+                        <div className="userName">{displayName ? displayName : currentUser.displayName}</div>
                     </div>
                 </div>
                 <div>

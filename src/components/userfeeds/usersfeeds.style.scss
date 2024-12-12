@@ -108,17 +108,20 @@ $carousel-dot-size: 10px;
 
         .share-options {
             display: flex;
-            flex-direction: column;
+           justify-content: space-around;
+           align-items: center;
+           flex-wrap: wrap;
             gap: 10px;
 
             .share-btn {
-                padding: 10px;
-                background-color: $primary-color;
-                color: $bg-color;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                width: 100%;
+                // padding: 10px;
+                // background-color: $primary-color;
+                // color: $bg-color;
+                // border: none;
+                // border-radius: 5px;
+                // cursor: pointer;
+                // width: 100%;
+                text-decoration: none;
             }
         }
 
@@ -129,11 +132,12 @@ $carousel-dot-size: 10px;
 
             .copy-link-btn {
                 padding: 10px;
-                background-color: $secondary-color;
-                color: $bg-color;
+                // background-color: $secondary-color;
+                color: #000;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
+                width: 100%;
             }
 
             .copy-message {
@@ -159,3 +163,35 @@ $carousel-dot-size: 10px;
 .carousel-header{
     margin-bottom: 0px;
 }
+.share-container{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    a{
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        justify-content: center;
+        align-items: center;
+        color: #c6c6c6;
+    }
+    img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+   
+}
+
+ .close-popup {
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     border: none;
+     font-weight: bold;
+     border: 1px solid #c6c6c6;
+     cursor: pointer;
+ }

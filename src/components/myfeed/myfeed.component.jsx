@@ -77,8 +77,10 @@ const MyFeeds = () => {
                                 {/* Carousel for each feed's media */}
                                 <div className="feed-carousel-container">
                                     <div className="file-preview-card">
-                                        {feed.fileUrls && feed.fileUrls.length > 0 && (
+                                        {/* Check if feed.fileUrls exists and has items */}
+                                        {feed.fileUrls && feed.fileUrls.length > 0 ? (
                                             <div>
+                                                {/* Check if the current item is a video or an image */}
                                                 {feed.fileUrls[currentIndex].includes("video") ? (
                                                     <video controls src={feed.fileUrls[currentIndex]} className="preview-video" />
                                                 ) : (
@@ -89,6 +91,8 @@ const MyFeeds = () => {
                                                     />
                                                 )}
                                             </div>
+                                        ) : (
+                                            <p>No media available</p> // Show a fallback message if there are no media
                                         )}
                                     </div>
 
@@ -108,6 +112,7 @@ const MyFeeds = () => {
                                         <span>{`${currentIndex + 1} / ${feed.fileUrls.length}`}</span>
                                     </div>
                                 </div>
+
                             </div>
                         ))
                     )}

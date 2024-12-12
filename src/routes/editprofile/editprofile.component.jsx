@@ -8,6 +8,7 @@ import Buttons from '../../components/buttons/buttons.component';
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../utils/firebase/firebase.utilities"; // Assuming the db export is set up correctly
 import { useNavigate } from 'react-router-dom';
+
 const EditProfile = () => {
     const { currentUser, userDetails } = useContext(UserContext);
     const { photoURL, displayName, email, bg, bio } = userDetails;
@@ -16,10 +17,12 @@ const EditProfile = () => {
     const [profileImage, setProfileImage] = useState(photoURL);
     const [name, setName] = useState(displayName);
     const [bioText, setBioText] = useState(bio);
-    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false); // Loading state to show the button text change
+    const navigate = useNavigate();
+
     const handleBack = () => {
-        navigate('/profile')
-    }
+        navigate('/profile');
+    };
 
     const fileInputRef = useRef(null);
     const userProfileRef = useRef(null);
@@ -48,8 +51,7 @@ const EditProfile = () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    const imageUrl = data.secure_url; // Get the secure 
-                    console.log(imageUrl);
+                    const imageUrl = data.secure_url; // Get the secure URL
                     setBackgroundImage(imageUrl); // Update the state with the Cloudinary URL
                 })
                 .catch((error) => {
@@ -72,8 +74,7 @@ const EditProfile = () => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    const imageUrl = data.secure_url; // Get the secure 
-                    console.log(imageUrl);
+                    const imageUrl = data.secure_url; // Get the secure URL
                     setProfileImage(imageUrl); // Update the state with the Cloudinary URL
                 })
                 .catch((error) => {
@@ -82,10 +83,9 @@ const EditProfile = () => {
         }
     };
 
-  
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true); // Set loading to true while the update is in progress
 
         // Create a reference to the user's document in Firestore
         const userDocRef = doc(db, "users", currentUser.uid);
@@ -99,10 +99,16 @@ const EditProfile = () => {
                 bg: backgroundImage, // Store the URL of the background image
             }, { merge: true });
 
-            // Optionally, you can show a success message or navigate the user
             console.log("User profile updated successfully!");
+
+            // Redirect to the profile page after 2 seconds
+            setTimeout(() => {
+                navigate('/profile');
+            }, 2000); // Redirect delay (2 seconds)
         } catch (error) {
             console.error("Error updating profile: ", error);
+        } finally {
+            setLoading(false); // Set loading to false after operation completes
         }
     };
 
@@ -121,8 +127,8 @@ const EditProfile = () => {
 
                 <div className="edit-bio-section">
                     <div className="profile-icon-section">
-                        <div className="profile-image">
-                            <img src={profileImage} alt="Profile" />
+                        <div className="profile-image"> 
+                            <img src={profileImage ? profileImage : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s'} onError={(e) => e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s'} alt="Profile" />
                             <span className="profile-edit-icon">
                                 <img src={Edit_Icon} alt="Edit" onClick={profileUpdateHandler} />
                                 <input
@@ -172,9 +178,13 @@ const EditProfile = () => {
                                 className="form-input"
                             />
                         </div>
+                    </div>
 
-                   </div>
-                    <Buttons buttonType={"primaryButton"} buttonName="Save" />
+                    {/* Conditionally change the button text */}
+                    <Buttons
+                        buttonType={"primaryButton"}
+                        buttonName={loading ? "Saving..." : "Save"}
+                    />
                 </form>
             </div>
         </div>

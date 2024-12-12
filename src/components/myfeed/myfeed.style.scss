@@ -8,126 +8,259 @@ $background-color_3: white;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+
     .my-feeds-header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-    
-        .feeds-list {
-            display: flex;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            // column-gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-    
-        // {
-        .feed-card {
-         width: 47%;
-         background: none;
-         position: relative;
-        
-        }
-    
-                 .feed-card:nth-child(2)
-                 {
-                    margin-top: 2rem;
-                 }
-    
-                 .feed-title:nth-child(odd){
-                    bottom: 57px;
-                 }
-        .feed-title {
-        padding: 10px;
-            position: absolute;
-            text-align: start;
-            bottom: 30px;
-            z-index: 1;
-            color: #fff;
-            font-size: 11px;
-             display: inline;
-            -webkit-line-clamp: 1;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            word-wrap: break-word;
-    
-            h3 {
-                margin: 0;
-                font-size: 18px;
-                font-weight: 600;
-            }
-        }
-    
-        .feed-carousel-container {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            border-radius: 1.5rem;
-        }
-    
-        .file-preview-card {
-            width: 100%;
-            height: 100%;
-        }
-    
-        .preview-image {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
         width: 100%;
-            height: 100%;
-            object-fit: fill;
-            min-height: 250px;
-        }
-    
-        .preview-video {
-            width: 100%;
-            height: 100%;
-        }
-    
-        .carousel-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 5px;
-        }
-    
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: $background-color_2;
-            cursor: pointer;
-        }
-    
-        .dot.active {
-            background-color: $background-color_3;
-        }
-    
-        .carousel-info {
+    }
+
+    .feeds-list {
+        display: grid;
+        /* Switch to grid layout */
+        grid-template-columns: repeat(2, 1fr);
+        /* Create two equal columns */
+        gap: 20px;
+        /* Space between grid items */
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .feed-card {
+        width: 100%;
+        /* Make each card take up full width in its column */
+        background: none;
+        position: relative;
+        /* Make each card have a border-radius and styling */
+        border-radius: 1rem;
+    }
+
+    .feed-card:nth-child(odd) {
+        margin-top: 2rem;
+        /* Add top margin to odd cards to stagger them */
+    }
+
+    .feed-title {
+        padding: 10px;
         position: absolute;
-          
-            transform: translateX(-50%);
-            color: white;
-            font-size: 14px;
-            top: 15px;
-            right: 5px;
-            font-weight: bold;
-        };
-                .line-clamp-1 {
-                    display: block;
-                    display: -webkit-box;
-                    height: 50px;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+        text-align: start;
+        bottom: 30px;
+        z-index: 1;
+        color: #fff;
+        font-size: 11px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+
+        h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+    }
+                .feed-card:nth-child(even) .feed-title {
+                    bottom: 47px;
+                    /* Staggered position for even cards */
                 }
-        
+
+    .feed-carousel-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 1.5rem;
+    }
+
+    .file-preview-card {
+        width: 100%;
+        height: 100%;
+    }
+
+    .preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        min-height: 250px;
+    }
+
+    .preview-video {
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $background-color_2;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background-color: $background-color_3;
+    }
+
+    .carousel-info {
+        position: absolute;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 14px;
+        top: 15px;
+        right: 5px;
+        font-weight: bold;
+    }
+
+    .line-clamp-1 {
+        display: block;
+        display: -webkit-box;
+        height: 50px;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}$color_1: white;
+$background-color_1: #f9f9f9;
+$background-color_2: rgba(255, 255, 255, 0.7);
+$background-color_3: white;
+
+.my-feeds-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    .my-feeds-header {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .feeds-list {
+        display: grid;
+        /* Switch to grid layout */
+        grid-template-columns: repeat(2, 1fr);
+        /* Create two equal columns */
+        gap: 20px;
+        /* Space between grid items */
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .feed-card {
+        width: 100%;
+        /* Make each card take up full width in its column */
+        background: none;
+        position: relative;
+        /* Make each card have a border-radius and styling */
+        border-radius: 1rem;
+    }
+
+    .feed-card:nth-child(odd) {
+        margin-top: 2rem;
+        /* Add top margin to odd cards to stagger them */
+    }
+
+    .feed-title {
+        padding: 10px;
+        position: absolute;
+        text-align: start;
+        bottom: 30px;
+        z-index: 1;
+        color: #fff;
+        font-size: 11px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+
+        h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+
+    .feed-carousel-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 1.5rem;
+    }
+
+    .file-preview-card {
+        width: 100%;
+        height: 100%;
+    }
+
+    .preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        min-height: 250px;
+    }
+
+    .preview-video {
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $background-color_2;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background-color: $background-color_3;
+    }
+
+    .carousel-info {
+        position: absolute;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 14px;
+        top: 15px;
+        right: 5px;
+        font-weight: bold;
+    }
+
+    .line-clamp-1 {
+        display: block;
+        display: -webkit-box;
+        height: 50px;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
