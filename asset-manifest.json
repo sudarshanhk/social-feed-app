@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/social-feed-app/static/css/main.b1b4a986.css",
-    "main.js": "/social-feed-app/static/js/main.bb96abee.js",
+    "main.js": "/social-feed-app/static/js/main.0162c8c7.js",
     "static/js/488.48fa673b.chunk.js": "/social-feed-app/static/js/488.48fa673b.chunk.js",
     "static/media/login-bg.png": "/social-feed-app/static/media/login-bg.8a11ec7eb5759268ab2a.png",
     "static/media/default-bg.png": "/social-feed-app/static/media/default-bg.bffea8388dd296474233.png",
@@ -13,11 +13,11 @@
     "static/media/whatsapp.png": "/social-feed-app/static/media/whatsapp.3606cd4e84acd479f745.png",
     "index.html": "/social-feed-app/index.html",
     "main.b1b4a986.css.map": "/social-feed-app/static/css/main.b1b4a986.css.map",
-    "main.bb96abee.js.map": "/social-feed-app/static/js/main.bb96abee.js.map",
+    "main.0162c8c7.js.map": "/social-feed-app/static/js/main.0162c8c7.js.map",
     "488.48fa673b.chunk.js.map": "/social-feed-app/static/js/488.48fa673b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b1b4a986.css",
-    "static/js/main.bb96abee.js"
+    "static/js/main.0162c8c7.js"
   ]
 }
