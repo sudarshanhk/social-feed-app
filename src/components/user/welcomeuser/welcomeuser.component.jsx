@@ -19,7 +19,7 @@ const WelcomeUser = ( { text}) => {
     const { displayName, photoURL } = userDetails;
     const profilePicUrl = photoURL || currentUser.photoURL || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s' // Fallback to a default image if necessary
 
-    console.log(userDetails);
+  
 
     return (
         <div className="user-details-container" onClick={profilePageNavigation}>

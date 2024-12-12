@@ -6,7 +6,7 @@ import { use, useContext } from "react";
 import  DefaultBgImage from "../../assets/default-bg.png"
 const ProfileBio = ( {onClick} ) => {
     const { currentUser, userDetails } = useContext(UserContext);
-    console.log(userDetails)
+  
     if (!currentUser) return null;
     const { photoURL, displayName, email, bg, bio } = userDetails
     return (

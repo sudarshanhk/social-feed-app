@@ -19,10 +19,10 @@ export const UserProvider = ({ children }) => {
     const location = useLocation();
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener(async (user) => {
-            console.log(user);
+          
            
             const currentPath = location.pathname; 
-            console.log(currentPath)
+          
             if (!user) {
                 navigate('/');
             }

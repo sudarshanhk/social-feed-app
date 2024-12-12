@@ -79,7 +79,7 @@ const CreateFeed = () => {
     };
 
     const { currentUser, userDetails } = useContext(UserContext);
-    console.log(currentUser)
+  
     const { photoURL, displayName, email, bg, bio, uid } = userDetails;
     // Function to save feed to Firestore with user details
     const saveFeedToFirestore = async () => {
