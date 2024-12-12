@@ -10,7 +10,7 @@ import { db } from "../../utils/firebase/firebase.utilities"; // Assuming the db
 import { useNavigate } from 'react-router-dom';
 
 const EditProfile = () => {
-    const { currentUser, userDetails } = useContext(UserContext);
+    const { currentUser, userDetails, setUserDetails } = useContext(UserContext); // Assuming you have setUserDetails
     const { photoURL, displayName, email, bg, bio } = userDetails;
 
     const [backgroundImage, setBackgroundImage] = useState(bg);
@@ -19,6 +19,7 @@ const EditProfile = () => {
     const [bioText, setBioText] = useState(bio);
     const [loading, setLoading] = useState(false); // Loading state to show the button text change
     const navigate = useNavigate();
+    const [refresh, setRefresh] = useState(false); // A state to trigger re-render
 
     const handleBack = () => {
         navigate('/profile');
@@ -101,6 +102,18 @@ const EditProfile = () => {
 
             console.log("User profile updated successfully!");
 
+            // Optionally update the UserContext with the new data
+            setUserDetails({
+                ...userDetails,
+                displayName: name,
+                bio: bioText,
+                photoURL: profileImage,
+                bg: backgroundImage,
+            });
+
+            // Trigger re-render by toggling the refresh state
+            setRefresh(!refresh);
+
             // Redirect to the profile page after 2 seconds
             setTimeout(() => {
                 navigate('/profile');
@@ -127,7 +140,7 @@ const EditProfile = () => {
 
                 <div className="edit-bio-section">
                     <div className="profile-icon-section">
-                        <div className="profile-image"> 
+                        <div className="profile-image">
                             <img src={profileImage ? profileImage : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s'} onError={(e) => e.target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s'} alt="Profile" />
                             <span className="profile-edit-icon">
                                 <img src={Edit_Icon} alt="Edit" onClick={profileUpdateHandler} />
@@ -180,7 +193,6 @@ const EditProfile = () => {
                         </div>
                     </div>
 
-                    {/* Conditionally change the button text */}
                     <Buttons
                         buttonType={"primaryButton"}
                         buttonName={loading ? "Saving..." : "Save"}
